@@ -1,6 +1,4 @@
 import { createElement, useState } from "react";
-import Chirp from "./Chirp";
-import { createRoot } from "react-dom/client";
 
 
 
@@ -14,14 +12,8 @@ const ChirpCreator = props => {
         
         //gen new chirps here prob ig       not here something with arryas idk im sleep
 
-        let card = () => {
-            return(
-                <>
-                <Chirp user={username} message={text} className="card-text"></Chirp>
-                </>
-            );
-        }
-        props.newCard(card);
+        let cardData = [username, text];
+        props.newCardData(cardData);
         
         setUsername('');
         setText('');

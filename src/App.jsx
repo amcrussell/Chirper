@@ -6,15 +6,18 @@ import ChirpCreator from "./components/chirpCreator";
 const App = () => {
 
 
-    const [newCard, setNewCard] = useState([]);
-    
-    console.log(newCard);
-
+    const [newCard, setNewCard] = useState([['someone', 'hello'], ['second guy', 'hi'], ['third guy', 'buy']]);
+    const feed = [];
     let genCard = (e) => {
 
         setNewCard([...newCard, e]);
 
     }
+
+    newCard.forEach(e => {
+        feed.push(<Chirp key={feed.length} user={e[0]} message={e[1]} className="card-text" ></Chirp>);
+
+    })
 
     return (<>
 
@@ -26,7 +29,7 @@ const App = () => {
             <div className="col-4" style={{ marginRight: 4 + "em" }}>
                 <div className="card" style={{ width: 20 + "em" }} >
                     <div className="card-body">
-                        <ChirpCreator newCard={genCard}>
+                        <ChirpCreator newCardData={genCard}>
 
                         </ChirpCreator>
                     </div>
@@ -34,11 +37,8 @@ const App = () => {
             </div>
 
             <div className="col">
-                <div id="feed" className="card ">
-                    <Chirp user='someone' message='Hello' className="card-text"></Chirp>
-                    <Chirp user='second guy' message='Hi' className="card-text"></Chirp>
-                    <Chirp user='third guy' message='Bye' className="card-text"></Chirp>
-                    {newCard}
+                <div className="card ">
+                    {feed}
                 </div>
             </div>
 
