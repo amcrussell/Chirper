@@ -21,12 +21,10 @@ const ChirpCreator = props => {
                 </>
             );
         }
-        const root = createRoot(document.getElementById('feed'));
+        props.newCard(card);
         
-        //document.getElementById('feed').append(createElement(Chirp, {user: {username}, message: {text}, className: 'card-text'}))
         setUsername('');
         setText('');
-        root.render(card());
     }
 
     return (<>
